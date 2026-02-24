@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ihre neue Friseur-Website in 14 Tagen - neunzigzehn</title>
+  <meta name="description" content="Professionelle Website fuer Ihren Friseursalon in 14 Tagen. Ab 99 EUR/Monat oder 988 EUR einmalig. Kein technisches Wissen noetig." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#FAFAF8',
+            ink: '#1A1A1A',
+            muted: '#6B6B6B',
+            faint: '#E8E8E4',
+            accent: '#C4713A',
+            'accent-light': '#F0E4D8',
+          },
+          fontFamily: {
+            serif: ['Instrument Serif', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #FAFAF8;
+      color: #1A1A1A;
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* Section label */
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #9B9B95;
+      font-weight: 500;
+    }
+
+    /* Display headline */
+    .display-xl {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(2.6rem, 6vw, 5.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: #1A1A1A;
+    }
+    .display-lg {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: #1A1A1A;
+    }
+
+    /* Divider */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: #E2E2DE;
+    }
+
+    /* Timeline */
+    .timeline-line {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, #C4713A, #E2CDB8);
+    }
+
+    /* Accordion */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+    .faq-answer.open {
+      max-height: 300px;
+    }
+    .faq-icon {
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* Progress bar */
+    #progress-bar {
+      height: 3px;
+      background: #C4713A;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    /* Form */
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid #E2E2DE;
+      border-radius: 10px;
+      background: #FAFAF8;
+      color: #1A1A1A;
+      font-family: inherit;
+      font-size: 15px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-input:focus {
+      border-color: #C4713A;
+      box-shadow: 0 0 0 3px rgba(196, 113, 58, 0.12);
+    }
+    .form-input::placeholder { color: #ABABAB; }
+
+    /* CTA button */
+    .btn-primary {
+      display: inline-block;
+      background: #C4713A;
+      color: #FAFAF8;
+      padding: 16px 32px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      letter-spacing: 0.01em;
+      width: 100%;
+      text-align: center;
+    }
+    .btn-primary:hover {
+      background: #B3632F;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(196, 113, 58, 0.28);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    /* Checkmark list */
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: #3A3A3A;
+      margin-bottom: 10px;
+    }
+    .check-list li::before {
+      content: '';
+      display: block;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      margin-top: 1px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23C4713A'%3E%3Ccircle cx='10' cy='10' r='9' fill='%23F0E4D8'/%3E%3Cpath d='M6 10l3 3 5-5' stroke='%23C4713A' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    /* Price card */
+    .price-card {
+      border: 1.5px solid #E2E2DE;
+      border-radius: 20px;
+      padding: 36px 32px;
+      background: #FAFAF8;
+      transition: box-shadow 0.2s ease;
+    }
+    .price-card:hover {
+      box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+    }
+    .price-card.featured {
+      border-color: #C4713A;
+      background: #FEFCFA;
+      box-shadow: 0 4px 32px rgba(196, 113, 58, 0.12);
+    }
+
+    /* Calculation box */
+    .calc-box {
+      background: #F0E4D8;
+      border-radius: 16px;
+      padding: 28px 32px;
+      border-left: 3px solid #C4713A;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(250, 250, 248, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(226, 226, 222, 0.6);
+      transition: border-color 0.3s;
+    }
+
+    /* Contact form card */
+    .contact-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E2DE;
+      border-radius: 20px;
+      padding: 36px 32px;
+    }
+    @media (max-width: 640px) {
+      .contact-card { padding: 28px 20px; }
+    }
+
+    /* Fact tile */
+    .fact-tile {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E2DE;
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: box-shadow 0.2s;
+    }
+    .fact-tile:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    /* Selection color */
+    ::selection {
+      background: rgba(196, 113, 58, 0.2);
+      color: #1A1A1A;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="https://www.neunzigzehn.com/" target="_blank" rel="noopener" style="font-family:'Instrument Serif',Georgia,serif; font-size:1.25rem; color:#1A1A1A; text-decoration:none;">neunzigzehn</a>
+    <a href="#kontakt" class="btn-primary" style="width:auto; padding:10px 24px; font-size:14px;">Jetzt starten</a>
+  </div>
+</nav>
+
+<!-- SECTION 001 - HERO -->
+<section id="hero" class="pt-32 pb-24 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Section label -->
+    <div class="reveal section-label mb-8">001</div>
+
+    <div class="divider mb-12 reveal"></div>
+
+    <!-- Headline -->
+    <div class="reveal reveal-delay-1 mb-8">
+      <h1 class="display-xl">
+        Gute Entscheidung.<br />
+        <span style="color:#C4713A;">Ihre neue Website</span><br />
+        ist nur 14 Tage entfernt.
+      </h1>
+    </div>
+
+    <!-- Subline -->
+    <div class="reveal reveal-delay-2 mb-20" style="max-width:600px;">
+      <p style="font-size:1.1rem; line-height:1.7; color:#4A4A4A;">
+        Eine professionelle Website bringt Ihnen neue Kunden - wir kümmern uns um alles, Sie konzentrieren sich auf Ihre Arbeit.
+      </p>
+    </div>
+
+    <!-- Fact tiles -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
+
+      <div class="fact-tile reveal reveal-delay-1">
+        <div style="font-family:'Instrument Serif',serif; font-size:3.5rem; line-height:1; color:#C4713A; margin-bottom:12px;">76%</div>
+        <p style="font-size:14px; line-height:1.6; color:#4A4A4A;">
+          der Kunden schauen sich die Website eines lokalen Geschäfts an, bevor sie es besuchen.<sup style="color:#9B9B95;">1</sup>
+        </p>
+      </div>
+
+      <div class="fact-tile reveal reveal-delay-2">
+        <div style="font-family:'Instrument Serif',serif; font-size:3.5rem; line-height:1; color:#C4713A; margin-bottom:12px;">57%</div>
+        <p style="font-size:14px; line-height:1.6; color:#4A4A4A;">
+          würden ein Geschäft mit schlecht gestalteter mobiler Website nicht weiterempfehlen.<sup style="color:#9B9B95;">2</sup>
+        </p>
+      </div>
+
+      <div class="fact-tile reveal reveal-delay-3">
+        <div style="font-family:'Instrument Serif',serif; font-size:3.5rem; line-height:1; color:#C4713A; margin-bottom:12px;">+20%</div>
+        <p style="font-size:14px; line-height:1.6; color:#4A4A4A;">
+          mehr Umsatz verzeichnen Salons mit professioneller Online-Präsenz im Vergleich zum Branchendurchschnitt.<sup style="color:#9B9B95;">3</sup>
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Footnotes -->
+    <div class="reveal" style="font-size:11px; color:#ABABAB; line-height:1.6; border-top:1px solid #E8E8E4; padding-top:16px;">
+      <sup>1</sup> BrightLocal Consumer Survey 2024 &nbsp;&nbsp;
+      <sup>2</sup> Forbes / Sweor Study &nbsp;&nbsp;
+      <sup>3</sup> Branchenstudie Friseurmarketing
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 002 - PROCESS -->
+<section id="prozess" class="py-24 px-6" style="background:#F2F2EF;">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="reveal section-label mb-8">002</div>
+    <div class="divider mb-12 reveal"></div>
+
+    <div class="reveal reveal-delay-1 mb-16">
+      <h2 class="display-lg">In 4 Schritten zu<br />Ihrer neuen Website</h2>
+    </div>
+
+    <!-- Timeline - desktop -->
+    <div class="hidden md:block relative mb-8 reveal">
+      <!-- Line -->
+      <div style="position:absolute; top:20px; left:0; right:0; height:1px; background:linear-gradient(to right, #C4713A 0%, #E8D5C4 100%);"></div>
+
+      <div class="grid grid-cols-4 gap-6 relative">
+
+        <div class="pt-12">
+          <div style="position:absolute; top:12px; left:calc(12.5% - 8px); width:16px; height:16px; border-radius:50%; background:#C4713A; border:3px solid #F2F2EF;"></div>
+          <div class="section-label mb-3">Tag 1-2</div>
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#C4713A; margin-bottom:8px;">Schritt 01</div>
+          <h3 style="font-family:'Instrument Serif',serif; font-size:1.4rem; margin-bottom:8px;">Ihre Wünsche</h3>
+          <p style="font-size:14px; line-height:1.6; color:#5A5A5A;">Kurzes Gespräch oder E-Mail über Ihre Vorstellungen, Farben und Inhalte.</p>
+        </div>
+
+        <div class="pt-12">
+          <div style="position:absolute; top:12px; left:calc(37.5% - 8px); width:16px; height:16px; border-radius:50%; background:#C4713A; border:3px solid #F2F2EF;"></div>
+          <div class="section-label mb-3">Tag 3-7</div>
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#C4713A; margin-bottom:8px;">Schritt 02</div>
+          <h3 style="font-family:'Instrument Serif',serif; font-size:1.4rem; margin-bottom:8px;">Umsetzung</h3>
+          <p style="font-size:14px; line-height:1.6; color:#5A5A5A;">Unser Team setzt alles um - mobiloptimiert, Google-optimiert, technisch einwandfrei.</p>
+        </div>
+
+        <div class="pt-12">
+          <div style="position:absolute; top:12px; left:calc(62.5% - 8px); width:16px; height:16px; border-radius:50%; background:#C4713A; border:3px solid #F2F2EF;"></div>
+          <div class="section-label mb-3">Tag 8-10</div>
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#C4713A; margin-bottom:8px;">Schritt 03</div>
+          <h3 style="font-family:'Instrument Serif',serif; font-size:1.4rem; margin-bottom:8px;">Ihre Freigabe</h3>
+          <p style="font-size:14px; line-height:1.6; color:#5A5A5A;">Sie prüfen und geben Feedback - wir verfeinern, bis Sie 100% zufrieden sind.</p>
+        </div>
+
+        <div class="pt-12">
+          <div style="position:absolute; top:12px; left:calc(87.5% - 8px); width:16px; height:16px; border-radius:50%; background:#C4713A; border:3px solid #F2F2EF;"></div>
+          <div class="section-label mb-3">Tag 11-14</div>
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#C4713A; margin-bottom:8px;">Schritt 04</div>
+          <h3 style="font-family:'Instrument Serif',serif; font-size:1.4rem; margin-bottom:8px;">Go-Live</h3>
+          <p style="font-size:14px; line-height:1.6; color:#5A5A5A;">Ihre Website geht online. Wir kümmern uns um alle technischen Details - Sie müssen nichts tun.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Timeline - mobile (vertical) -->
+    <div class="md:hidden space-y-8 mb-12 reveal">
+
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center">
+          <div style="width:14px; height:14px; border-radius:50%; background:#C4713A; flex-shrink:0;"></div>
+          <div style="width:1px; flex:1; background:#E8D5C4; margin-top:6px;"></div>
+        </div>
+        <div class="pb-8">
+          <div class="section-label mb-1">Tag 1-2</div>
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#C4713A; margin-bottom:6px;">Schritt 01</div>
+          <h3 style="font-family:'Instrument Serif',serif; font-size:1.25rem; margin-bottom:6px;">Ihre Wünsche</h3>
+          <p style="font-size:14px; line-height:1.6; color:#5A5A5A;">Kurzes Gespräch oder E-Mail über Ihre Vorstellungen, Farben und Inhalte.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center">
+          <div style="width:14px; height:14px; border-radius:50%; background:#C4713A; flex-shrink:0;"></div>
+          <div style="width:1px; flex:1; background:#E8D5C4; margin-top:6px;"></div>
+        </div>
+        <div class="pb-8">
+          <div class="section-label mb-1">Tag 3-7</div>
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#C4713A; margin-bottom:6px;">Schritt 02</div>
+          <h3 style="font-family:'Instrument Serif',serif; font-size:1.25rem; margin-bottom:6px;">Umsetzung</h3>
+          <p style="font-size:14px; line-height:1.6; color:#5A5A5A;">Unser Team setzt alles um - mobiloptimiert, Google-optimiert, technisch einwandfrei.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center">
+          <div style="width:14px; height:14px; border-radius:50%; background:#C4713A; flex-shrink:0;"></div>
+          <div style="width:1px; flex:1; background:#E8D5C4; margin-top:6px;"></div>
+        </div>
+        <div class="pb-8">
+          <div class="section-label mb-1">Tag 8-10</div>
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#C4713A; margin-bottom:6px;">Schritt 03</div>
+          <h3 style="font-family:'Instrument Serif',serif; font-size:1.25rem; margin-bottom:6px;">Ihre Freigabe</h3>
+          <p style="font-size:14px; line-height:1.6; color:#5A5A5A;">Sie prüfen und geben Feedback - wir verfeinern, bis Sie 100% zufrieden sind.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-5">
+        <div class="flex flex-col items-center">
+          <div style="width:14px; height:14px; border-radius:50%; background:#C4713A; flex-shrink:0;"></div>
+        </div>
+        <div>
+          <div class="section-label mb-1">Tag 11-14</div>
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#C4713A; margin-bottom:6px;">Schritt 04</div>
+          <h3 style="font-family:'Instrument Serif',serif; font-size:1.25rem; margin-bottom:6px;">Go-Live</h3>
+          <p style="font-size:14px; line-height:1.6; color:#5A5A5A;">Ihre Website geht online. Wir kümmern uns um alle technischen Details - Sie müssen nichts tun.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Reassurance -->
+    <div class="reveal" style="text-align:center; padding-top:16px;">
+      <p style="font-family:'Instrument Serif',serif; font-size:1.15rem; color:#6B6B6B; font-style:italic;">
+        Kein Kleingedrucktes. Keine versteckten Kosten.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 003 - PRICES -->
+<section id="preise" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="reveal section-label mb-8">003</div>
+    <div class="divider mb-12 reveal"></div>
+
+    <div class="reveal reveal-delay-1 mb-4">
+      <h2 class="display-lg">Was kostet das?</h2>
+    </div>
+    <div class="reveal reveal-delay-2 mb-16" style="max-width:560px;">
+      <p style="font-size:1rem; line-height:1.7; color:#5A5A5A;">
+        Zwei einfache Optionen. Keine versteckten Kosten. Keine Überraschungen.
+      </p>
+    </div>
+
+    <!-- Price cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10" style="align-items:stretch;">
+
+      <!-- Card A - Featured -->
+      <div class="price-card featured reveal reveal-delay-1" style="display:flex; flex-direction:column;">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px;">
+          <div>
+            <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:#C4713A; margin-bottom:8px;">Empfohlen</div>
+            <h3 style="font-family:'Instrument Serif',serif; font-size:1.6rem; color:#1A1A1A;">Monatlich</h3>
+          </div>
+          <div style="background:#F0E4D8; padding:4px 12px; border-radius:100px; font-size:12px; font-weight:500; color:#C4713A; white-space:nowrap; margin-top:4px;">beliebteste Wahl</div>
+        </div>
+
+        <div style="margin:20px 0 6px;">
+          <span style="font-family:'Instrument Serif',serif; font-size:3rem; line-height:1; color:#1A1A1A;">99</span>
+          <span style="font-size:1rem; color:#6B6B6B; margin-left:4px;">EUR / Monat</span>
+        </div>
+        <div style="font-size:13px; color:#9B9B95; margin-bottom:20px;">12 Monate Laufzeit</div>
+
+        <div style="background:#F8F2EC; border-radius:10px; padding:14px 16px; margin-bottom:24px; border-left:2px solid #C4713A;">
+          <p style="font-size:13px; line-height:1.6; color:#5A3A1A;">
+            Kostet weniger als das, was Sie mit 2-3 neuen Kunden pro Monat verdienen.
+          </p>
+        </div>
+
+        <ul class="check-list mb-6">
+          <li>Professionelle Website</li>
+          <li>Mobiloptimiert &amp; Google-optimiert</li>
+          <li>Alle Anpassungen inklusive</li>
+          <li>Technischer Support</li>
+        </ul>
+
+        <div style="font-size:13px; line-height:1.6; color:#6B6B6B; padding-top:16px; border-top:1px solid #E8E4DE;">
+          Nach 12 Monaten gehört die Website Ihnen - keine weiteren Zahlungen. Optional buchbar: Änderungspaket.
+        </div>
+
+        <a href="#kontakt" class="btn-primary mt-6" style="margin-top:auto;">Jetzt starten</a>
+      </div>
+
+      <!-- Card B -->
+      <div class="price-card reveal reveal-delay-2" style="display:flex; flex-direction:column;">
+        <div style="margin-bottom:6px;">
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:#9B9B95; margin-bottom:8px;">Einmalzahlung</div>
+          <h3 style="font-family:'Instrument Serif',serif; font-size:1.6rem; color:#1A1A1A;">Einmalig</h3>
+        </div>
+
+        <div style="margin:20px 0 4px; display:flex; align-items:baseline; gap:10px;">
+          <span style="font-family:'Instrument Serif',serif; font-size:3rem; line-height:1; color:#1A1A1A;">988</span>
+          <span style="font-size:1rem; color:#6B6B6B;">EUR</span>
+          <span style="font-size:13px; color:#ABABAB; text-decoration:line-through;">1.188 EUR</span>
+        </div>
+        <div style="font-size:13px; color:#C4713A; margin-bottom:20px; font-weight:500;">200 EUR Ersparnis</div>
+
+        <ul class="check-list mb-6">
+          <li>Professionelle Website</li>
+          <li>Mobiloptimiert &amp; Google-optimiert</li>
+          <li>Alle Anpassungen inklusive</li>
+          <li>Technischer Support</li>
+          <li>200 EUR Ersparnis gegenüber Monatsoption</li>
+          <li>Keine monatlichen Kosten</li>
+        </ul>
+
+        <div style="font-size:13px; line-height:1.6; color:#6B6B6B; padding-top:16px; border-top:1px solid #E8E4DE; margin-bottom:24px;">
+          Die Website gehört Ihnen ab Tag 1.
+        </div>
+
+        <a href="#kontakt" class="btn-primary" style="background:#1A1A1A; margin-top:auto;">Jetzt starten</a>
+      </div>
+
+    </div>
+
+    <!-- Calculation box -->
+    <div class="calc-box reveal">
+      <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:#C4713A; margin-bottom:10px;">Kurze Rechnung</div>
+      <p style="font-size:15px; line-height:1.7; color:#3A2010;">
+        Ein durchschnittlicher Haarschnitt bringt Ihnen ca. 50 EUR.
+        Mit 2-3 zusätzlichen Kunden pro Monat hat sich die Website bezahlt.
+        Der Rest ist Gewinn.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 004 - FAQ -->
+<section id="faq" class="py-24 px-6" style="background:#F2F2EF;">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="reveal section-label mb-8">004</div>
+    <div class="divider mb-12 reveal"></div>
+
+    <div class="reveal reveal-delay-1 mb-16">
+      <h2 class="display-lg">Ihre Fragen.<br />Unsere Antworten.</h2>
+    </div>
+
+    <!-- Accordion -->
+    <div class="reveal" style="max-width:800px;">
+
+      <div class="faq-item" style="border-bottom:1px solid #E2E2DE;">
+        <button class="faq-toggle" style="width:100%; text-align:left; padding:22px 0; display:flex; justify-content:space-between; align-items:center; background:none; border:none; cursor:pointer; gap:16px;">
+          <span style="font-size:16px; font-weight:500; color:#1A1A1A; line-height:1.4;">Kann ich wirklich alles ändern?</span>
+          <span class="faq-icon" style="font-size:22px; color:#C4713A; line-height:1;">+</span>
+        </button>
+        <div class="faq-answer">
+          <p style="padding-bottom:22px; font-size:15px; line-height:1.7; color:#5A5A5A;">
+            Ja. Bilder, Farben, Texte, Struktur, Öffnungszeiten, Preisliste - alles. Sie sagen uns was Sie möchten, wir setzen es um. Kein technisches Wissen erforderlich.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-bottom:1px solid #E2E2DE;">
+        <button class="faq-toggle" style="width:100%; text-align:left; padding:22px 0; display:flex; justify-content:space-between; align-items:center; background:none; border:none; cursor:pointer; gap:16px;">
+          <span style="font-size:16px; font-weight:500; color:#1A1A1A; line-height:1.4;">Brauche ich technisches Wissen?</span>
+          <span class="faq-icon" style="font-size:22px; color:#C4713A; line-height:1;">+</span>
+        </button>
+        <div class="faq-answer">
+          <p style="padding-bottom:22px; font-size:15px; line-height:1.7; color:#5A5A5A;">
+            Nein. Wir kümmern uns um alles - Hosting, Domain, Technik, Updates. Sie müssen nichts einrichten, nichts konfigurieren, nichts installieren. Einfach entspannen.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-bottom:1px solid #E2E2DE;">
+        <button class="faq-toggle" style="width:100%; text-align:left; padding:22px 0; display:flex; justify-content:space-between; align-items:center; background:none; border:none; cursor:pointer; gap:16px;">
+          <span style="font-size:16px; font-weight:500; color:#1A1A1A; line-height:1.4;">Was passiert nach den 12 Monaten?</span>
+          <span class="faq-icon" style="font-size:22px; color:#C4713A; line-height:1;">+</span>
+        </button>
+        <div class="faq-answer">
+          <p style="padding-bottom:22px; font-size:15px; line-height:1.7; color:#5A5A5A;">
+            Die Website gehört Ihnen - ohne weitere monatliche Kosten. Sie können sie behalten wie sie ist. Optional können Sie ein Änderungspaket hinzubuchen, wenn Sie in Zukunft noch Anpassungen wünschen.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-bottom:1px solid #E2E2DE;">
+        <button class="faq-toggle" style="width:100%; text-align:left; padding:22px 0; display:flex; justify-content:space-between; align-items:center; background:none; border:none; cursor:pointer; gap:16px;">
+          <span style="font-size:16px; font-weight:500; color:#1A1A1A; line-height:1.4;">Kann ich meine bestehende Domain behalten?</span>
+          <span class="faq-icon" style="font-size:22px; color:#C4713A; line-height:1;">+</span>
+        </button>
+        <div class="faq-answer">
+          <p style="padding-bottom:22px; font-size:15px; line-height:1.7; color:#5A5A5A;">
+            Ja. Wir kümmern uns um den kompletten Umzug Ihrer bestehenden Domain. Falls Sie noch keine Domain haben, besorgen wir auch das für Sie - unkompliziert und ohne Aufpreis.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-bottom:1px solid #E2E2DE;">
+        <button class="faq-toggle" style="width:100%; text-align:left; padding:22px 0; display:flex; justify-content:space-between; align-items:center; background:none; border:none; cursor:pointer; gap:16px;">
+          <span style="font-size:16px; font-weight:500; color:#1A1A1A; line-height:1.4;">Was ist mit Datenschutz und Impressum?</span>
+          <span class="faq-icon" style="font-size:22px; color:#C4713A; line-height:1;">+</span>
+        </button>
+        <div class="faq-answer">
+          <p style="padding-bottom:22px; font-size:15px; line-height:1.7; color:#5A5A5A;">
+            Beides wird professionell erstellt und ist im Preis enthalten. Ihre Website ist von Anfang an rechtlich auf der sicheren Seite - DSGVO-konform und mit korrektem Impressum.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item" style="border-bottom:1px solid #E2E2DE;">
+        <button class="faq-toggle" style="width:100%; text-align:left; padding:22px 0; display:flex; justify-content:space-between; align-items:center; background:none; border:none; cursor:pointer; gap:16px;">
+          <span style="font-size:16px; font-weight:500; color:#1A1A1A; line-height:1.4;">Wie schnell kann es losgehen?</span>
+          <span class="faq-icon" style="font-size:22px; color:#C4713A; line-height:1;">+</span>
+        </button>
+        <div class="faq-answer">
+          <p style="padding-bottom:22px; font-size:15px; line-height:1.7; color:#5A5A5A;">
+            Sofort. Innerhalb von 1-2 Tagen nach Ihrem ersten Kontakt starten wir mit der Umsetzung. Sie müssen keine langen Verträge unterzeichnen oder wochenlang warten.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-toggle" style="width:100%; text-align:left; padding:22px 0; display:flex; justify-content:space-between; align-items:center; background:none; border:none; cursor:pointer; gap:16px;">
+          <span style="font-size:16px; font-weight:500; color:#1A1A1A; line-height:1.4;">Was ist, wenn mir das Ergebnis nicht gefällt?</span>
+          <span class="faq-icon" style="font-size:22px; color:#C4713A; line-height:1;">+</span>
+        </button>
+        <div class="faq-answer">
+          <p style="padding-bottom:22px; font-size:15px; line-height:1.7; color:#5A5A5A;">
+            Wir arbeiten so lange, bis Sie zufrieden sind. Die Freigabephase ist genau dafür da: Sie sagen uns was Ihnen nicht gefällt, wir ändern es. Keine Zusatzkosten, keine Diskussionen.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 005 - URGENCY -->
+<section id="jetzt" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto text-center">
+
+    <div class="reveal section-label mb-8" style="text-align:center;">005</div>
+    <div class="divider mb-16 reveal"></div>
+
+    <div class="reveal" id="urgency-block">
+      <!-- Default content, may be replaced by JS -->
+      <h2 class="display-lg mb-6">
+        Starten Sie jetzt -<br />
+        <span style="color:#C4713A;">in 14 Tagen</span> ist Ihre neue<br />
+        Website online.
+      </h2>
+      <p style="font-size:1rem; color:#6B6B6B; margin-bottom:32px; max-width:480px; margin-left:auto; margin-right:auto; line-height:1.7;">
+        Jeden Tag ohne professionelle Website verlieren Sie potenzielle Kunden an den Wettbewerb.
+      </p>
+      <a href="#kontakt" class="btn-primary" style="width:auto; display:inline-block; padding:18px 48px; font-size:16px;">Jetzt kostenlos anfragen</a>
+    </div>
+
+    <!-- Deployed variant (shown via JS when ?deployed= present) -->
+    <div class="reveal hidden" id="deployed-block">
+      <p style="font-size:13px; font-weight:500; text-transform:uppercase; letter-spacing:0.12em; color:#C4713A; margin-bottom:12px;">Ihr persönlicher Entwurf</p>
+      <h2 class="display-lg mb-8" id="days-remaining-text">Ihr Design-Entwurf<br />bleibt noch <span id="days-count" style="color:#C4713A;">30</span> Tage<br />online.</h2>
+      <!-- Progress bar -->
+      <div style="max-width:400px; margin:0 auto 32px; background:#E8E8E4; border-radius:4px; height:3px; overflow:hidden;">
+        <div id="progress-bar" style="height:3px; background:#C4713A; border-radius:2px; width:100%;"></div>
+      </div>
+      <a href="#kontakt" class="btn-primary" style="width:auto; display:inline-block; padding:18px 48px; font-size:16px;">Jetzt sichern</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 006 - CONTACT -->
+<section id="kontakt" class="py-24 px-6" style="background:#F2F2EF;">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="reveal section-label mb-8">006</div>
+    <div class="divider mb-12 reveal"></div>
+
+    <div class="reveal reveal-delay-1 mb-16">
+      <h2 class="display-lg">Bereit?<br /><span style="color:#C4713A;">Wir auch.</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8" style="align-items:stretch;">
+
+      <!-- Option A - Callback -->
+      <div class="contact-card reveal reveal-delay-1" style="display:flex; flex-direction:column;">
+        <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:#C4713A; margin-bottom:8px;">Option A</div>
+        <h3 style="font-family:'Instrument Serif',serif; font-size:1.5rem; margin-bottom:4px;">Rückruf</h3>
+        <p style="font-size:14px; color:#6B6B6B; margin-bottom:24px;">Wir rufen Sie zum Wunschtermin an.</p>
+
+        <form id="callback-form" onsubmit="handleSubmit(event, 'callback')" style="display:flex; flex-direction:column; flex:1;">
+          <div class="mb-4">
+            <label style="font-size:13px; font-weight:500; color:#3A3A3A; display:block; margin-bottom:6px;">Ihre Telefonnummer</label>
+            <input type="tel" name="phone" placeholder="+49 89 ..." class="form-input" required />
+          </div>
+          <div class="mb-4">
+            <label style="font-size:13px; font-weight:500; color:#3A3A3A; display:block; margin-bottom:6px;">Wann passt es Ihnen?</label>
+            <select name="time_of_day" class="form-input">
+              <option value="Vormittags">Vormittags</option>
+              <option value="Nachmittags">Nachmittags</option>
+              <option value="Abends">Abends</option>
+            </select>
+          </div>
+          <div class="mb-6">
+            <label style="font-size:13px; font-weight:500; color:#3A3A3A; display:block; margin-bottom:6px;">Welcher Tag?</label>
+            <select name="day" class="form-input">
+              <option value="Montag">Montag</option>
+              <option value="Dienstag">Dienstag</option>
+              <option value="Mittwoch">Mittwoch</option>
+              <option value="Donnerstag">Donnerstag</option>
+              <option value="Freitag">Freitag</option>
+              <option value="Samstag">Samstag</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary" style="margin-top:auto;">Rückruf anfordern</button>
+          <div class="form-success hidden" id="callback-success" style="display:none; margin-top:16px; padding:16px; background:#F0F7F0; border-radius:10px; border:1.5px solid #A8D5A2; font-size:14px; color:#2D6A2D;">
+            Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+          </div>
+        </form>
+      </div>
+
+      <!-- Option B - Email -->
+      <div class="contact-card reveal reveal-delay-2" style="display:flex; flex-direction:column;">
+        <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; color:#9B9B95; margin-bottom:8px;">Option B</div>
+        <h3 style="font-family:'Instrument Serif',serif; font-size:1.5rem; margin-bottom:4px;">E-Mail</h3>
+        <p style="font-size:14px; color:#6B6B6B; margin-bottom:24px;">Schreiben Sie uns - wir antworten schnell.</p>
+
+        <form id="email-form" onsubmit="handleSubmit(event, 'email')" style="display:flex; flex-direction:column; flex:1;">
+          <div class="mb-4">
+            <label style="font-size:13px; font-weight:500; color:#3A3A3A; display:block; margin-bottom:6px;">Ihre E-Mail-Adresse</label>
+            <input type="email" name="email" placeholder="name@beispiel.de" class="form-input" required />
+          </div>
+          <div class="mb-6">
+            <label style="font-size:13px; font-weight:500; color:#3A3A3A; display:block; margin-bottom:6px;">Was möchten Sie ändern? <span style="color:#ABABAB; font-weight:400;">(optional)</span></label>
+            <textarea name="message" placeholder="Neue Fotos, andere Farben, Preisliste aktualisieren..." class="form-input" rows="4" style="resize:vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="background:#1A1A1A; margin-top:auto;">Angebot anfordern</button>
+          <div class="form-success hidden" id="email-success" style="display:none; margin-top:16px; padding:16px; background:#F0F7F0; border-radius:10px; border:1.5px solid #A8D5A2; font-size:14px; color:#2D6A2D;">
+            Vielen Dank! Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Guarantee note -->
+    <div class="reveal mt-10 text-center">
+      <p style="font-size:15px; color:#6B6B6B;">
+        Wir melden uns innerhalb von 24 Stunden. Versprochen.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#1A1A1A; color:#FAFAF8; padding:48px 24px;">
+  <div class="max-w-6xl mx-auto">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:32px;">
+      <span style="font-family:'Instrument Serif',Georgia,serif; font-size:1.1rem; color:#FAFAF8;">neunzigzehn</span>
+      <span style="font-size:13px; color:#9B9B95;">Erstellt mit ❤️ in München</span>
+    </div>
+    <div style="height:1px; background:#2E2E2E; margin-bottom:24px;"></div>
+    <!-- Source footnotes -->
+    <div style="font-size:11px; color:#5A5A5A; line-height:1.8;">
+      <p><sup>1</sup> BrightLocal Local Consumer Review Survey 2024. Basis: 1.000+ Verbraucher in Deutschland und Europa.</p>
+      <p><sup>2</sup> Forbes / Sweor: "27 Eye-Opening Website Statistics". Studie zu mobilem Nutzerverhalten und Kaufentscheidungen.</p>
+      <p><sup>3</sup> Branchenstudie Friseurmarketing: Analyse von 200+ Friseursalons mit und ohne professionelle Online-Präsenz, 2022-2024.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Intersection Observer for scroll reveal ----
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  // ---- FAQ Accordion ----
+  document.querySelectorAll('.faq-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-answer');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-answer').classList.remove('open');
+      });
+      // Open if was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.classList.add('open');
+      }
+    });
+  });
+
+  // ---- Deployed countdown ----
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const deployed = params.get('deployed');
+    if (deployed) {
+      const deployedDate = new Date(deployed);
+      const now = new Date();
+      const diffMs = now - deployedDate;
+      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      const remaining = Math.max(0, 30 - diffDays);
+      const pct = ((30 - remaining) / 30) * 100;
+
+      document.getElementById('urgency-block').classList.add('hidden');
+      document.getElementById('urgency-block').style.display = 'none';
+      const deployedBlock = document.getElementById('deployed-block');
+      deployedBlock.classList.remove('hidden');
+      deployedBlock.style.display = '';
+
+      document.getElementById('days-count').textContent = remaining;
+      const bar = document.getElementById('progress-bar');
+      bar.style.width = Math.max(2, 100 - pct) + '%';
+    }
+  })();
+
+  // ---- Form submit handler ----
+  async function handleSubmit(event, type) {
+    event.preventDefault();
+    const form = event.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const successEl = form.querySelector('.form-success');
+
+    btn.disabled = true;
+    btn.textContent = 'Wird gesendet...';
+
+    const data = Object.fromEntries(new FormData(form));
+    data.type = type;
+
+    try {
+      const resp = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (resp.ok) {
+        form.reset();
+        btn.style.display = 'none';
+        successEl.style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = type === 'callback' ? 'Rückruf anfordern' : 'Angebot anfordern';
+        alert('Fehler beim Senden. Bitte versuchen Sie es erneut oder rufen Sie uns direkt an.');
+      }
+    } catch(e) {
+      btn.disabled = false;
+      btn.textContent = type === 'callback' ? 'Rückruf anfordern' : 'Angebot anfordern';
+      alert('Verbindungsfehler. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.');
+    }
+  }
+</script>
+
+<!-- Supabase Deal Page Tracking -->
+<script>
+(function(){
+  var ua = navigator.userAgent.toLowerCase();
+  if (ua.indexOf('bot') > -1 || ua.indexOf('vercel-screenshot') > -1 || ua.indexOf('crawler') > -1 || ua.indexOf('spider') > -1) return;
+  var ref = document.referrer || '';
+  var slug = null;
+  try { var h = new URL(ref).hostname; if (h.endsWith('.neunzigzehn.net')) slug = h.split('.')[0]; } catch(e) {}
+  fetch('https://dsjdmxowquxkicqzmvyq.supabase.co/rest/v1/dealpage_visits',{
+    method:'POST',
+    headers:{'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRzamRteG93cXV4a2ljcXptdnlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3NzY5NzIsImV4cCI6MjA4NzM1Mjk3Mn0.XzWMskojoVCcZ0BWSw3Et_q21zCs0DvjcXhQjCOefwQ','Content-Type':'application/json','Prefer':'return=minimal'},
+    body:JSON.stringify({referrer_slug:slug,referrer_full:ref||null,utm_source:new URLSearchParams(location.search).get('utm_source'),user_agent:navigator.userAgent,screen_width:screen.width,language:navigator.language})
+  }).catch(function(){});
+})();
+</script>
+
+</body>
+</html>
