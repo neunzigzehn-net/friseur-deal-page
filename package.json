@@ -1,0 +1,8 @@
+{
+  "name": "friseur-deal-page",
+  "version": "1.0.0",
+  "description": "Friseur deal page with contact forms",
+  "dependencies": {
+    "nodemailer": "^6.9.9"
+  }
+}
